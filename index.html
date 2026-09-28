@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="ms">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arena K1 Sejarah</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+:root{
+  --bg:#E9F0EE; --card:#FFFFFF; --card2:#F4F8F7; --ink:#10363D; --ink2:#3C5A5E; --muted:#6A817E;
+  --line:#CFDCD9; --accent:#E39A2D; --accent-ink:#3A2200; --accent-soft:#FBEBD2;
+  --ok:#2B8A57; --ok-soft:#DDF1E5; --bad:#C2423A; --bad-soft:#F8E0DD; --focus:#1D6FD6;
+  --stamp:#10363D; --stamp-ink:#FFFFFF;
+  --shadow:0 1px 0 rgba(16,54,61,.06), 0 10px 30px -18px rgba(16,54,61,.35);
+  --fs:1;
+  --display:"Bricolage Grotesque", "Segoe UI", system-ui, sans-serif;
+  --body:"Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme:dark;
+    --bg:#0B1B1F; --card:#12282D; --card2:#173238; --ink:#E3EEEB; --ink2:#B5CAC6; --muted:#86A09B;
+    --line:#26444A; --accent:#F0B24F; --accent-ink:#2A1800; --accent-soft:#3A2E17;
+    --ok:#55C589; --ok-soft:#173A29; --bad:#EE7B72; --bad-soft:#40201E; --focus:#7DB5FF;
+    --stamp:#F0B24F; --stamp-ink:#1B1204;
+    --shadow:0 1px 0 rgba(0,0,0,.3), 0 12px 30px -18px rgba(0,0,0,.8);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#0B1B1F; --card:#12282D; --card2:#173238; --ink:#E3EEEB; --ink2:#B5CAC6; --muted:#86A09B;
+  --line:#26444A; --accent:#F0B24F; --accent-ink:#2A1800; --accent-soft:#3A2E17;
+  --ok:#55C589; --ok-soft:#173A29; --bad:#EE7B72; --bad-soft:#40201E; --focus:#7DB5FF;
+  --stamp:#F0B24F; --stamp-ink:#1B1204;
+  --shadow:0 1px 0 rgba(0,0,0,.3), 0 12px 30px -18px rgba(0,0,0,.8);
+}
+*{box-sizing:border-box}
+html,body{min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:calc(16px * var(--fs));line-height:1.5;padding-inline:16px;padding-block:18px 40px}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.wrap{max-width:1120px;margin:0 auto;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{font-family:var(--display);text-wrap:balance;margin:0;letter-spacing:-.01em}
+.eyebrow{font-family:var(--mono);font-size:.74em;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.btn{border:1.5px solid var(--line);background:var(--card);border-radius:10px;padding:.6em 1em;font-weight:700;display:inline-flex;align-items:center;gap:.5em;transition:transform .12s, background .12s}
+.btn:hover{background:var(--card2)}
+.btn:active{transform:translateY(1px)}
+.btn.primary{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.primary:hover{filter:brightness(1.12)}
+.btn.accent{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn.ghost{background:transparent}
+.btn.sm{padding:.35em .7em;font-size:.88em}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+
+/* ---------- top bar ---------- */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px}
+.seal{width:38px;height:38px;border-radius:50%;background:var(--stamp);color:var(--stamp-ink);display:grid;place-items:center;font-family:var(--display);font-weight:800;font-size:15px;letter-spacing:-.02em;flex:none}
+.brand b{font-family:var(--display);font-size:1.05em;display:block;line-height:1.1}
+.brand span{font-size:.8em;color:var(--muted)}
+.tools{display:flex;gap:6px;flex-wrap:wrap}
+
+/* ---------- home ---------- */
+.hero{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:clamp(20px,4vw,40px);display:grid;grid-template-columns:1.25fr 1fr;gap:clamp(18px,3vw,40px);position:relative;overflow:hidden}
+.hero h1{font-size:clamp(2.2em,5.5vw,3.8em);line-height:.98;font-weight:800}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero p.lead{color:var(--ink2);max-width:52ch;margin:.9em 0 0}
+.ansstrip{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin-top:8px;max-width:460px}
+.pickhead{display:flex;justify-content:space-between;align-items:baseline;margin-top:22px;max-width:460px;font-size:.9em}
+.pickhead .lbl{font-weight:700}
+.pickcount{font-family:var(--mono);color:var(--accent);font-size:.9em}
+.ansstrip .pk{aspect-ratio:1;border-radius:6px;background:var(--card2);border:1.5px solid var(--line);display:grid;place-items:center;font-family:var(--mono);font-size:.72em;color:var(--muted);padding:0;position:relative;overflow:hidden;transition:background .12s,transform .1s}
+.ansstrip .pk:hover{transform:translateY(-1px);border-color:var(--ink2)}
+.ansstrip .pk[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg);font-weight:700}
+.ansstrip .pk.r::after{content:"";position:absolute;top:0;right:0;border-style:solid;border-width:0 9px 9px 0;border-color:transparent var(--accent) transparent transparent}
+.seg.quick button{font-size:.82em;padding:.3em .75em}
+.setup{display:flex;flex-direction:column;gap:16px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field>label,.field>.lbl{font-weight:700;font-size:.9em}
+.seg{display:flex;flex-wrap:wrap;gap:6px}
+.seg button{border:1.5px solid var(--line);background:var(--card2);border-radius:999px;padding:.4em .9em;font-size:.92em}
+.seg button[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink);font-weight:700}
+.modecards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.modecard{text-align:left;border:2px solid var(--line);border-radius:14px;padding:14px;background:var(--card2);display:flex;flex-direction:column;gap:4px}
+.modecard b{font-family:var(--display);font-size:1.12em}
+.modecard span{font-size:.86em;color:var(--ink2);line-height:1.35}
+.modecard[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.teams{display:flex;flex-direction:column;gap:6px}
+.teams input{width:100%;border:1.5px solid var(--line);background:var(--card);border-radius:8px;padding:.45em .7em;font:inherit;color:var(--ink)}
+.teamrow{display:flex;gap:6px;align-items:center}
+.teamrow .dot{width:14px;height:14px;border-radius:50%;flex:none}
+.startrow{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.note{font-size:.85em;color:var(--muted)}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.howto div{background:var(--card);border-radius:14px;padding:16px;border:1px solid var(--line)}
+.howto h3{font-size:1.02em;margin-bottom:4px}
+.howto p{margin:0;font-size:.9em;color:var(--ink2)}
+kbd{font-family:var(--mono);font-size:.8em;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px;padding:0 .35em;background:var(--card2)}
+
+/* ---------- quiz ---------- */
+.qlayout{display:grid;grid-template-columns:1fr;gap:18px;align-items:start}
+.qlayout.group{grid-template-columns:1fr 290px}
+.statusbar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;background:var(--card);border-radius:14px;padding:10px 14px;box-shadow:var(--shadow)}
+.pips{display:flex;gap:3px;flex:1;min-width:180px;flex-wrap:wrap}
+.pips button{height:14px;flex:1;min-width:8px;border-radius:4px;background:var(--line);border:0;padding:0;transition:transform .1s}
+.pips button:hover{transform:scaleY(1.35)}
+.pips button.ok{background:var(--ok)}
+.pips button.bad{background:var(--bad)}
+.pips button.cur{outline:2.5px solid var(--accent);outline-offset:1.5px}
+.pips button:not(.ok):not(.bad).cur{background:var(--accent)}
+.navrow{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.stat{display:flex;flex-direction:column;align-items:flex-end;line-height:1.05}
+.stat small{font-size:.66em;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-family:var(--mono)}
+.stat b{font-family:var(--mono);font-size:1.25em;font-variant-numeric:tabular-nums}
+.streak b{color:var(--accent)}
+.timer{position:relative;width:48px;height:48px;flex:none}
+.timer svg{width:48px;height:48px;transform:rotate(-90deg)}
+.timer circle{fill:none;stroke-width:5}
+.timer .trk{stroke:var(--line)}
+.timer .val{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset .95s linear}
+.timer.low .val{stroke:var(--bad)}
+.timer span{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--mono);font-weight:700;font-size:.85em}
+
+.qcard{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:clamp(18px,3.4vw,34px);display:flex;flex-direction:column;gap:18px;animation:rise .35s ease both}
+@keyframes rise{from{transform:translateY(8px);opacity:.4}to{transform:none;opacity:1}}
+.qhead{display:flex;gap:14px;align-items:flex-start}
+.qno{flex:none;width:clamp(54px,8vw,72px);aspect-ratio:1;border-radius:14px;background:var(--stamp);color:var(--stamp-ink);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--display);font-weight:800;line-height:1}
+.qno b{font-size:clamp(1.5em,3.6vw,2.1em)}
+.qno small{font-family:var(--mono);font-size:.58em;font-weight:500;opacity:.8;margin-top:3px}
+.qmeta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.chip{font-family:var(--mono);font-size:.7em;padding:.2em .6em;border-radius:999px;border:1px solid var(--line);color:var(--ink2);background:var(--card2)}
+.chip.t{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+.qtext{font-size:clamp(1.12em,2.3vw,1.42em);font-weight:700;line-height:1.35;margin:0}
+.qtext .sub{display:block;font-weight:400;color:var(--ink2);font-size:.82em;margin-top:.35em}
+
+/* stimulus */
+.stim{align-self:flex-start;max-width:100%;overflow-x:auto}
+.stim table{border-collapse:collapse;font-size:.98em;min-width:280px}
+.stim th,.stim td{border:1.5px solid var(--ink);padding:.45em .9em;text-align:left}
+.stim th{background:var(--card2);font-family:var(--display)}
+.stim ul{margin:0;padding:.7em 1.1em .7em 2.1em;border:1.5px dashed var(--line);border-radius:10px;background:var(--card2)}
+.stim ul.it li{font-style:italic}
+.stim .x{font-style:normal;font-weight:800;color:var(--accent);font-family:var(--display);font-size:1.1em}
+.tline{display:grid;grid-template-columns:auto 22px 1fr;column-gap:10px;padding:10px 14px;border:1.5px dashed var(--line);border-radius:10px;background:var(--card2)}
+.tline .yr{font-family:var(--mono);font-weight:700;text-align:right;padding:.35em 0}
+.tline .ax{position:relative}
+.tline .ax::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:var(--ink)}
+.tline .ax.first::before{top:50%}
+.tline .ax.first::after{content:"";position:absolute;left:50%;top:-4px;margin-left:-8px;border:8px solid transparent;border-bottom:12px solid var(--ink);border-top:0}
+.tline .ax.last::before{bottom:50%}
+.tline .ax span{position:absolute;left:50%;top:50%;width:11px;height:11px;margin:-5.5px 0 0 -5.5px;border-radius:50%;background:var(--card);border:3px solid var(--ink)}
+.tline .ev{padding:.35em 0}
+.plate{display:flex;align-items:center;gap:14px;padding:12px 16px;border:1.5px dashed var(--line);border-radius:12px;background:var(--card2)}
+.plate .ph{width:56px;height:68px;border-radius:8px;background:linear-gradient(160deg,var(--line),var(--card));display:grid;place-items:center;font-family:var(--display);font-weight:800;color:var(--ink2);font-size:1.3em;flex:none}
+.plate b{font-family:var(--display);font-size:1.15em;display:block}
+.plate small{color:var(--muted)}
+
+/* roman statements */
+.roman{display:flex;flex-direction:column;gap:6px;margin:0;padding:0;list-style:none}
+.roman li{display:grid;grid-template-columns:2.6em 1fr auto;gap:8px;align-items:start;padding:.55em .8em;border-radius:10px;background:var(--card2);border:1.5px solid transparent}
+.roman li .rn{font-family:var(--display);font-weight:800;color:var(--ink2)}
+.roman li.ok{border-color:var(--ok);background:var(--ok-soft)}
+.roman li.bad{border-color:var(--bad);background:var(--bad-soft)}
+.roman li .rw{grid-column:2 / 4;font-size:.9em;color:var(--ink2)}
+.roman li .tag{font-family:var(--mono);font-size:.72em;font-weight:700;padding:.15em .5em;border-radius:6px}
+.roman li.ok .tag{background:var(--ok);color:var(--card)}
+.roman li.bad .tag{background:var(--bad);color:var(--card)}
+
+/* options */
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.opt{border:2px solid var(--line);background:var(--card);border-radius:14px;padding:12px 14px;text-align:left;display:grid;grid-template-columns:auto 1fr;gap:4px 12px;align-items:start;transition:border-color .15s, background .15s, transform .12s;position:relative}
+.opt:hover:not([disabled]){border-color:var(--ink);transform:translateY(-1px)}
+.opt[disabled]{cursor:default}
+.opt .L{width:2em;height:2em;border-radius:9px;display:grid;place-items:center;font-family:var(--display);font-weight:800;background:var(--card2);border:1.5px solid var(--line);grid-row:1;align-self:start}
+.opt .T{font-weight:700;align-self:start;min-height:2em;display:flex;align-items:center;font-size:1.02em;line-height:1.3}
+.opt .W{grid-column:2;font-size:.9em;color:var(--ink2);display:none;line-height:1.42}
+.revealed .opt .W{display:block}
+.opt .V{font-family:var(--mono);font-size:.7em;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-right:.4em}
+.opt.ok{border-color:var(--ok);background:var(--ok-soft)}
+.opt.ok .L{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.opt.ok .V{color:var(--ok)}
+.opt.bad .V{color:var(--bad)}
+.opt.pick.bad{border-color:var(--bad);background:var(--bad-soft)}
+.opt.pick.bad .L{background:var(--bad);border-color:var(--bad);color:var(--card)}
+.opt.pick::after{content:"Pilihan anda";position:absolute;top:-10px;right:12px;font-family:var(--mono);font-size:.64em;background:var(--ink);color:var(--bg);padding:.1em .5em;border-radius:5px}
+.group-mode .opt.pick::after{content:"Dipilih"}
+.opt.dim{opacity:.72}
+.opt.shake{animation:shake .38s}
+@keyframes shake{0%,100%{transform:none}25%{transform:translateX(-6px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+.opt.pop{animation:pop .4s}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.025)}100%{transform:scale(1)}}
+
+.verdict{display:flex;gap:12px;align-items:center;flex-wrap:wrap;justify-content:space-between;border-top:1.5px dashed var(--line);padding-top:14px}
+.verdict h3{font-size:1.25em}
+.verdict h3.ok{color:var(--ok)}
+.verdict h3.bad{color:var(--bad)}
+.verdict p{margin:2px 0 0;color:var(--ink2);font-size:.92em}
+.qfoot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+
+/* group side */
+.board{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:16px;display:flex;flex-direction:column;gap:10px;position:sticky;top:calc(env(safe-area-inset-top,0px) + 12px)}
+.board h2{font-size:1.1em}
+.trow{display:grid;grid-template-columns:18px 1fr auto;gap:8px;align-items:center;padding:8px 10px;border-radius:10px;background:var(--card2);border:2px solid transparent;transition:border-color .15s}
+.trow .dot{width:14px;height:14px;border-radius:50%}
+.trow .nm{font-weight:700;overflow-wrap:anywhere}
+.trow .sc{font-family:var(--mono);font-weight:700;font-size:1.15em;font-variant-numeric:tabular-nums}
+.trow.lead{border-color:var(--accent)}
+.trow .ctl{grid-column:2 / 4;display:flex;gap:6px;flex-wrap:wrap}
+.markbtn{flex:1;border:1.5px solid var(--line);background:var(--card);border-radius:8px;padding:.3em .5em;font-size:.82em;font-weight:700}
+.markbtn[aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:var(--card)}
+.adj{border:1.5px solid var(--line);background:var(--card);border-radius:8px;padding:.3em .55em;font-family:var(--mono);font-size:.8em}
+.bump{animation:bump .5s}
+@keyframes bump{40%{transform:scale(1.25);color:var(--ok)}}
+
+/* end */
+.endcard{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:clamp(20px,4vw,38px);display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:center}
+.ring{width:170px;height:170px;position:relative}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:14}
+.ring .trk{stroke:var(--card2)}
+.ring .val{stroke:var(--accent);stroke-linecap:round;transition:stroke-dashoffset 1.2s cubic-bezier(.2,.8,.2,1)}
+.ring div{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.ring b{font-family:var(--display);font-size:2.6em;font-weight:800;line-height:1}
+.ring small{font-family:var(--mono);color:var(--muted)}
+.endcard h2{font-size:clamp(1.6em,3.4vw,2.3em)}
+.endcard p{color:var(--ink2);margin:.4em 0 1em;max-width:56ch}
+.podium{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.podium .trow{grid-template-columns:28px 18px 1fr auto}
+.podium .pos{font-family:var(--display);font-weight:800;font-size:1.1em}
+.review{display:flex;flex-direction:column;gap:12px}
+.revhead{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.rv{background:var(--card);border-radius:14px;border:1px solid var(--line);padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px}
+.rv .n{font-family:var(--display);font-weight:800;font-size:1.3em;width:2.1em;height:2.1em;border-radius:10px;display:grid;place-items:center;background:var(--card2);grid-row:span 3}
+.rv.ok .n{background:var(--ok-soft);color:var(--ok)}
+.rv.bad .n{background:var(--bad-soft);color:var(--bad)}
+.rv .q{font-weight:700}
+.rv .a{font-size:.92em}
+.rv .a b{color:var(--ok)}
+.rv .a s{color:var(--bad);text-decoration-thickness:1.5px}
+.rv details{grid-column:2}
+.rv summary{cursor:pointer;font-size:.86em;color:var(--ink2);font-weight:700}
+.rv ul{margin:.4em 0 0;padding-left:1.1em;font-size:.88em;color:var(--ink2);display:flex;flex-direction:column;gap:4px}
+.rv ul li b{color:var(--ink)}
+footer{color:var(--muted);font-size:.8em;text-align:center}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:50}
+.toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 18px);transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:.55em 1em;border-radius:10px;font-weight:700;z-index:60;font-size:.9em}
+
+@media (max-width:860px){
+  .hero{grid-template-columns:1fr}
+  .qlayout.group{grid-template-columns:1fr}
+  .board{position:static}
+  .howto{grid-template-columns:1fr}
+}
+@media (max-width:620px){
+  .opts{grid-template-columns:1fr}
+  .modecards{grid-template-columns:1fr}
+  .endcard{grid-template-columns:1fr;justify-items:center;text-align:center}
+  .endcard p{margin-inline:auto}
+  .stat.hide-s{display:none}
+  .qhead{flex-direction:column}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+}
+</style>
+
+</head>
+<body>
+<div class="wrap" id="app"></div>
+<canvas id="fx" aria-hidden="true"></canvas>
+
+<script>
+/* =========================================================
+   BANK SOALAN — K1 Sejarah SPM 2021 (40 soalan)
+   f: tingkatan · tp: tajuk · q: soalan · s: stimulus
+   o/a/w: pilihan tunggal (a = indeks jawapan, w = huraian setiap pilihan)
+   r/a/w: soalan gabungan I–IV (a = dua pernyataan betul, w = huraian setiap pernyataan)
+   ========================================================= */
+const Q = [
+{n:1,f:4,tp:"Warisan Negara Bangsa",q:"Dalam sistem politik Melayu tradisional, kuasa dan pengaruh seorang raja terhadap sesebuah wilayah ditentukan berdasarkan",
+ o:["Persamaan budaya","Kesetiaan rakyat","Kegiatan ekonomi","Prinsip kepercayaan"],a:1,
+ w:["Wilayah yang berlainan budaya tetap boleh berada di bawah naungan raja. Persamaan budaya bukan ukuran kuasa raja.",
+    "Kuasa raja diukur melalui bilangan rakyat yang taat setia kepadanya, bukan sempadan yang tetap. Selagi rakyat di sesuatu kawasan taat setia, kawasan itu berada di bawah pengaruh raja.",
+    "Kegiatan ekonomi menjadi sumber kekayaan kerajaan, tetapi tidak menentukan sejauh mana pengaruh raja ke atas sesebuah wilayah.",
+    "Kepercayaan (konsep daulat) mengukuhkan kedudukan raja, tetapi keluasan pengaruhnya tetap ditentukan oleh kesetiaan rakyat."]},
+{n:2,f:4,tp:"Warisan Negara Bangsa",q:"Sumber pendapatan dan kewangan Kesultanan Melayu Melaka diperoleh daripada",
+ r:["Kegiatan perdagangan","Pembayaran ufti","Aktiviti pertanian","Sistem serah"],a:[0,1],
+ w:["Melaka ialah pelabuhan entrepot. Cukai pelabuhan dan cukai barangan dagangan menjadi sumber pendapatan utama kerajaan.",
+    "Negeri naungan seperti Pahang, Kampar, Siak dan Inderagiri menghantar ufti kepada Melaka sebagai tanda taat setia. Ufti menambah kekayaan kerajaan.",
+    "Tanah pertanian Melaka terhad. Bahan makanan seperti beras diimport dari Jawa dan Siam, jadi pertanian bukan sumber kewangan kerajaan.",
+    "Sistem serah ialah amalan pembesar mendapatkan hasil daripada rakyat. Ia bukan sumber kewangan kerajaan Melaka yang dibangunkan melalui perdagangan."]},
+{n:3,f:4,tp:"Kebangkitan Nasionalisme",q:"Raden Adjeng Kartini telah menulis dua buah karya berikut.",sub:"Kedua-dua karya tersebut menyentuh tentang",
+ s:{k:"list",it:true,items:["Hilang Gelap Terbitlah Terang","Penulisan Seorang Puteri Jawa"]},
+ o:["Kepesatan kegiatan ekonomi","Penindasan terhadap rakyat","Ancaman oleh kaum imigran","Kelemahan sistem pentadbiran"],a:1,
+ w:["Karya Kartini tidak membincangkan pertumbuhan ekonomi. Tumpuannya ialah nasib rakyat, khususnya wanita pribumi.",
+    "Kartini mendedahkan penindasan terhadap rakyat pribumi Jawa, terutama kaum wanita yang dinafikan hak pendidikan. Tulisannya membangkitkan kesedaran nasionalisme di Indonesia.",
+    "Isu kaum imigran tidak menjadi tema karya Kartini di Jawa.",
+    "Kartini tidak menulis tentang struktur pentadbiran. Beliau mengkritik penindasan dan menuntut pendidikan untuk rakyat."]},
+{n:4,f:4,tp:"Kebangkitan Nasionalisme",q:"Sistem pendidikan pada zaman penjajah telah membangkitkan semangat nasionalisme di Asia Tenggara.",sub:"Mengapakah keadaan tersebut berlaku?",
+ o:["Kemasukan kaum imigran tidak terkawal","Kemunculan ramai golongan intelek","Kewujudan golongan bangsawan","Kepelbagaian sukatan mata pelajaran"],a:1,
+ w:["Kemasukan imigran ialah faktor lain yang berkaitan dasar ekonomi penjajah, bukan hasil sistem pendidikan.",
+    "Pendidikan melahirkan golongan intelek yang sedar tentang penindasan penjajah. Mereka memimpin gerakan nasionalisme, contohnya Jose Rizal di Filipina.",
+    "Golongan bangsawan sudah wujud sebelum penjajahan. Mereka bukan lahir daripada sistem pendidikan penjajah.",
+    "Kepelbagaian mata pelajaran bukan punca. Yang penting ialah lahirnya golongan terpelajar yang sedar dan memimpin rakyat."]},
+{n:5,f:4,tp:"Kebangkitan Nasionalisme",q:"Mengapakah gerakan nasionalisme di China menentang pemerintahan Dinasti Manchu?",
+ o:["Gagal menghalang kemasukan kuasa Barat","Rakyat dibebani cukai yang tinggi","Membenci golongan Mandarin","Fahaman komunis berkembang"],a:0,
+ w:["Dinasti Manchu lemah dan terpaksa menandatangani perjanjian berat sebelah seperti Perjanjian Nanking. China dibahagikan kepada lingkungan pengaruh kuasa Barat. Golongan nasionalis seperti Dr. Sun Yat Sen bangkit menentang Manchu.",
+    "Rungutan tentang cukai wujud, tetapi bukan sebab utama gerakan nasionalisme. Tumpuan mereka ialah kegagalan Manchu mempertahankan China daripada kuasa Barat.",
+    "Golongan Mandarin ialah pegawai pentadbiran. Gerakan nasionalis menentang dinasti yang lemah, bukan membenci golongan pegawai.",
+    "Parti Komunis China hanya ditubuhkan pada 1921, selepas Dinasti Manchu tumbang pada 1911–1912."]},
+{n:6,f:4,tp:"Konflik Dunia & Pendudukan Jepun",q:"Berikut ialah negara yang terlibat dalam Pakatan Bertiga semasa Perang Dunia Pertama.",sub:"Apakah X?",
+ s:{k:"list",items:["Britain","Perancis","<span class='x'>X</span>"]},
+ o:["Jerman","Austria","Hungary","Rusia"],a:3,
+ w:["Jerman menganggotai Perikatan Bertiga (Kuasa Tengah) bersama Austria-Hungary dan Itali. Jerman ialah musuh Pakatan Bertiga.",
+    "Austria (Empayar Austria-Hungary) berada di pihak Kuasa Tengah bersama Jerman.",
+    "Hungary ialah sebahagian Empayar Austria-Hungary, juga di pihak Kuasa Tengah.",
+    "Pakatan Bertiga (Triple Entente) dianggotai Britain, Perancis dan Rusia."]},
+{n:7,f:4,tp:"Konflik Dunia & Pendudukan Jepun",q:"Bagi menangani kemelesetan ekonomi di Tanah Melayu, Jepun telah memperkenalkan",
+ r:["Jawatankuasa Penyelidikan Bahan","Rancangan Pengeluaran Lima Tahun","Institut Latihan Pemimpin Muda","Rancangan Kemakmuran Bersama Asia Timur Raya"],a:[0,1],
+ w:["Jawatankuasa ini mengkaji penggunaan bahan tempatan sebagai ganti barangan import yang terputus bekalannya semasa perang.",
+    "Rancangan ini bertujuan meningkatkan pengeluaran, terutama bahan makanan, untuk mengatasi kekurangan akibat perang.",
+    "Institut Latihan Pemimpin Muda melatih pemimpin tempatan untuk kepentingan pentadbiran dan propaganda Jepun. Ia bukan langkah ekonomi.",
+    "Kemakmuran Bersama Asia Timur Raya ialah slogan propaganda Jepun untuk membenarkan peluasan kuasanya, bukan langkah mengatasi kemelesetan."]},
+{n:8,f:4,tp:"Konflik Dunia & Pendudukan Jepun",q:"Jepun menyerang tanah jajahan kuasa Barat di Asia dalam Perang Dunia Kedua.",sub:"Apakah tindakan kuasa Barat untuk menghalang kemaraan Jepun?",
+ o:["Membentuk pertubuhan serantau","Mengisytiharkan ZOPFAN","Membebaskan tanah jajahan","Melakukan serangan bom atom"],a:3,
+ w:["Pertubuhan serantau seperti ASEAN (1967) hanya ditubuhkan selepas perang.",
+    "ZOPFAN diisytiharkan pada 1971 oleh negara ASEAN. Ia tiada kaitan dengan Perang Dunia Kedua.",
+    "Tanah jajahan hanya dibebaskan selepas perang melalui proses dekolonisasi, bukan untuk menghalang Jepun.",
+    "Amerika Syarikat menggugurkan bom atom di Hiroshima (6 Ogos 1945) dan Nagasaki (9 Ogos 1945). Jepun menyerah kalah pada 15 Ogos 1945."]},
+{n:9,f:4,tp:"Era Peralihan Kuasa British",q:"Apakah jasa tokoh berikut terhadap Sarawak?",
+ s:{k:"fig",name:"Rosli Dhoby",note:"Tokoh gerakan antipenyerahan Sarawak"},
+ o:["Menentang peluasan kuasa asing","Memajukan pendidikan anak tempatan","Mempertahankan pemerintahan beraja","Menghalang perkembangan pengaruh komunis"],a:0,
+ w:["Rosli Dhoby memperjuangkan gerakan antipenyerahan yang menentang Sarawak diserahkan kepada British sebagai tanah jajahan pada 1946. Beliau dihukum gantung pada 1950.",
+    "Beliau terkenal sebagai pejuang antipenyerahan, bukan tokoh pendidikan.",
+    "Perjuangan beliau menentang penjajahan British, bukan mempertahankan institusi beraja.",
+    "Ancaman komunis di Sarawak memuncak pada 1960-an, selepas zaman perjuangan Rosli Dhoby."]},
+{n:10,f:5,tp:"Kedaulatan Negara",q:"Mengapakah negara kita menjadi tumpuan orang asing sejak abad ke-16 sehingga masa ini?",
+ r:["Penduduk padat","Lokasi strategik","Sumber asli pelbagai","Tenaga buruh banyak"],a:[1,2],
+ w:["Tanah Melayu dahulu jarang penduduk. Kepadatan penduduk tidak menarik kuasa asing.",
+    "Negara kita terletak di laluan perdagangan Timur–Barat, terutama Selat Melaka.",
+    "Kekayaan bijih timah, rempah, emas, getah dan petroleum menarik kuasa asing.",
+    "Negara kita sebenarnya kekurangan buruh sehingga British membawa masuk buruh dari China dan India."]},
+{n:11,f:4,tp:"Persekutuan Tanah Melayu 1948",q:"Persekutuan Tanah Melayu ditubuhkan pada tahun 1948.",sub:"Mengapakah orang Melayu tidak menentang penubuhannya?",
+ o:["Undang-undang tradisional tamat","Kuasa Raja-raja Melayu dikembalikan","Singapura dipisahkan daripada Persekutuan","Kaum imigran tidak diberikan taraf kewarganegaraan"],a:1,
+ w:["Undang-undang tradisional tidak dimansuhkan. Pernyataan ini tidak tepat.",
+    "PTM 1948 menggantikan Malayan Union dan mengembalikan kedudukan serta kuasa Raja-raja Melayu. Tuntutan utama orang Melayu dipenuhi.",
+    "Singapura sudah dipisahkan sejak Malayan Union 1946. Ia bukan sebab orang Melayu menerima PTM.",
+    "Kaum imigran masih boleh menjadi warganegara, cuma syaratnya lebih ketat."]},
+{n:12,f:4,tp:"Persekutuan Tanah Melayu 1948",q:"Maklumat berikut berkaitan perkembangan politik di Tanah Melayu sebelum merdeka.",sub:"Apakah kesan peristiwa tersebut terhadap perjuangan orang Melayu?",
+ s:{k:"table",h:["Tahun","Peristiwa"],rows:[["1 Februari 1948","Persekutuan Tanah Melayu ditubuhkan"]]},
+ o:["Berkuasa mengawal pentadbiran","Parti-parti politik digabungkan","Syarat kerakyatan dipermudah","Diiktiraf sebagai penduduk asal"],a:3,
+ w:["Pentadbiran masih dikawal British melalui Pesuruhjaya Tinggi.",
+    "Gabungan parti (Perikatan) hanya berlaku pada 1950-an, bukan kesan langsung PTM 1948.",
+    "Syarat kerakyatan diperketat, bukan dipermudah, berbanding Malayan Union.",
+    "PTM 1948 mengiktiraf orang Melayu sebagai penduduk asal serta melindungi hak istimewa mereka."]},
+{n:13,f:4,tp:"Ancaman Komunis",q:"Bagaimanakah ideologi komunis disebarkan di Tanah Melayu?",
+ r:["Menyusup masuk dalam pertubuhan","Melalui hubungan antara kerajaan","Interaksi antara kumpulan pedagang","Pembukaan cawangan Parti Kuomintang"],a:[0,3],
+ w:["Komunis menyusup ke dalam kesatuan sekerja, pertubuhan belia dan sekolah untuk menyebarkan fahaman mereka.",
+    "Kerajaan British menentang komunis. Tiada hubungan rasmi antara kerajaan yang menyebarkan fahaman ini.",
+    "Penyebaran dilakukan secara terancang oleh ejen komunis, bukan melalui interaksi pedagang.",
+    "Anggota komunis bergerak melalui cawangan Kuomintang di Tanah Melayu untuk mendapatkan pengaruh."]},
+{n:14,f:4,tp:"Ancaman Komunis",q:"Berikut ialah tindakan yang dilakukan oleh pengganas komunis di Tanah Melayu.",sub:"Mengapakah tindakan tersebut dilakukan?",
+ s:{k:"list",it:true,items:["Merosakkan ladang getah","Mengganggu kerja di lombong","Merosakkan landasan kereta api"]},
+ o:["Memiliknegarakan sektor perusahaan","Menyusun semula sistem pemilikan","Menentang amalan buruh paksa","Melumpuhkan ekonomi British"],a:3,
+ w:["Sabotaj memusnahkan harta, bukan mengambil alih sektor perusahaan.",
+    "Penyusunan semula pemilikan tidak dicapai dengan memusnahkan ladang dan lombong.",
+    "Buruh paksa bukan isu dalam konteks Darurat 1948.",
+    "Getah, bijih timah dan pengangkutan ialah nadi ekonomi British. Sabotaj bertujuan melumpuhkan ekonomi supaya British berundur."]},
+{n:15,f:4,tp:"Usaha ke Arah Kemerdekaan",q:"Maklumat berikut berkaitan dengan pertubuhan politik di Tanah Melayu.",sub:"Apakah persamaan matlamat perjuangan pertubuhan tersebut?",
+ s:{k:"table",h:["Tahun","Pertubuhan"],rows:[["1938","Kesatuan Melayu Muda"],["1945","Parti Kebangsaan Melayu Malaya"]]},
+ o:["Konsep 'Merdeka dengan darah'","Merdeka melalui konsep 'Melayu Raya'","Penubuhan sebuah parti politik pelbagai kaum","Mengutamakan slogan Malaya untuk Melayu"],a:1,
+ w:["'Merdeka dengan darah' ialah slogan Angkatan Pemuda Insaf (API), bukan matlamat bersama KMM dan PKMM.",
+    "KMM dan PKMM sama-sama berjuang untuk kemerdekaan melalui gagasan Melayu Raya, iaitu penyatuan Tanah Melayu dengan Indonesia.",
+    "Parti pelbagai kaum dikaitkan dengan IMP dan Perikatan, bukan KMM dan PKMM.",
+    "Slogan ini bukan matlamat bersama kedua-dua pertubuhan. Matlamat bersama mereka ialah Melayu Raya."]},
+{n:16,f:4,tp:"Usaha ke Arah Kemerdekaan",q:"Penduduk tempatan Tanah Melayu dilantik sebagai ahli dalam Sistem Ahli pada tahun 1951.",sub:"Mengapakah pelantikan tersebut penting terhadap Tanah Melayu?",
+ o:["Pengekalan sistem pentadbiran tradisional","Persediaan ke arah berkerajaan sendiri","Pengukuhan kuasa politik bumiputera","Penjimatan perbelanjaan kerajaan"],a:1,
+ w:["Sistem Ahli ialah pentadbiran moden gaya kabinet, bukan sistem tradisional.",
+    "Penduduk tempatan diberi tanggungjawab mengetuai jabatan (contohnya Dato' Onn sebagai Ahli Hal Ehwal Dalam Negeri). Pengalaman ini menjadi persediaan untuk berkerajaan sendiri.",
+    "Ahli dilantik daripada pelbagai kaum. Tujuannya bukan mengukuhkan kuasa satu kaum.",
+    "Penjimatan bukan tujuan Sistem Ahli."]},
+{n:17,f:4,tp:"Usaha ke Arah Kemerdekaan",q:"Maklumat berikut berkaitan dengan sumbangan Dato' Onn Jaafar.",sub:"Mengapakah Dato' Onn menubuhkan Parti Kemerdekaan Malaya sedangkan sebelum itu beliau telah menubuhkan UMNO?",
+ s:{k:"table",h:["Tahun","Sumbangan"],rows:[["1946","Menubuhkan United Malays National Organisation (UMNO)"],["1951","Menubuhkan Parti Kemerdekaan Malaya (IMP)"]]},
+ o:["Mengutamakan perpaduan kaum","Menerima desakan daripada penjajah British","Memastikan kemenangan dalam pilihan raya","Memantapkan pengurusan dalam Sistem Ahli"],a:0,
+ w:["Cadangan Dato' Onn untuk membuka keahlian UMNO kepada bukan Melayu ditolak. Beliau keluar dan menubuhkan IMP yang terbuka kepada semua kaum demi perpaduan.",
+    "IMP ditubuhkan atas inisiatif Dato' Onn sendiri, bukan desakan British.",
+    "IMP kalah teruk dalam Pilihan Raya Majlis Perbandaran Kuala Lumpur 1952. Penubuhannya tidak memastikan kemenangan.",
+    "Sistem Ahli ialah sistem pentadbiran. Ia tiada kaitan dengan penubuhan parti politik."]},
+{n:18,f:4,tp:"Pilihan Raya",q:"Rajah berikut berkaitan dengan perkembangan pilihan raya yang diadakan di negara kita sebelum merdeka.",sub:"Apakah X?",
+ s:{k:"time",rows:[["1955","<span class='x'>X</span>"],["1954","Pilihan Raya peringkat negeri"],["1952","Pilihan Raya Majlis Perbandaran Kuala Lumpur"],["1951","Pilihan Raya Majlis Perbandaran George Town"]]},
+ o:["Pilihan Raya Majlis Perbandaran Melaka","Pilihan Raya Majlis Perundangan Sabah","Pilihan Raya Majlis Perbandaran Kuching","Pilihan Raya Majlis Perundangan Persekutuan"],a:3,
+ w:["Pilihan raya perbandaran ialah peringkat awal (1951–1952). Rajah menunjukkan pilihan raya semakin tinggi peringkatnya, jadi 1955 bukan peringkat perbandaran.",
+    "Sabah (Borneo Utara) belum menyertai negara kita pada 1955.",
+    "Kuching terletak di Sarawak yang belum menyertai negara kita pada 1955.",
+    "Pilihan Raya Umum Majlis Perundangan Persekutuan diadakan pada 27 Julai 1955. Parti Perikatan menang 51 daripada 52 kerusi."]},
+{n:19,f:4,tp:"Perlembagaan PTM 1957",q:"Raja-raja Melayu telah mengemukakan memorandum kepada Suruhanjaya Perlembagaan PTM.",sub:"Cadangan yang manakah terkandung dalam memorandum tersebut?",
+ o:["Yang di-Pertuan Agong sebagai ketua negara","Ketua Menteri mengetuai pentadbiran kerajaan","Undang-undang tempatan dikuatkuasakan","Syarat kewarganegaraan dikaji semula"],a:0,
+ w:["Raja-raja Melayu mencadangkan seorang ketua negara dipilih daripada kalangan Raja-raja Melayu, iaitu Yang di-Pertuan Agong.",
+    "Pentadbiran selepas merdeka diketuai Perdana Menteri, dan ini bukan cadangan memorandum Raja-raja Melayu.",
+    "Cadangan ini tidak terkandung dalam memorandum Raja-raja Melayu.",
+    "Isu kewarganegaraan dibangkitkan dalam memorandum Parti Perikatan, bukan memorandum Raja-raja Melayu."]},
+{n:20,f:4,tp:"Pemasyhuran Kemerdekaan",q:"Sebagai rakyat dalam sebuah negara yang merdeka, kita mesti",
+ r:["Meninggalkan norma-norma tradisional bangsa","Meningkatkan usaha untuk kepentingan peribadi","Bebas daripada pengaruh asing yang negatif","Berupaya menyumbang idea untuk bangsa"],a:[2,3],
+ w:["Norma tradisional ialah identiti bangsa yang perlu dipelihara, bukan ditinggalkan.",
+    "Mengutamakan kepentingan peribadi bertentangan dengan semangat patriotik. Kepentingan negara didahulukan.",
+    "Rakyat negara merdeka perlu bebas daripada pengaruh asing yang negatif, termasuk dari segi pemikiran dan budaya.",
+    "Rakyat perlu menyumbang idea dan tenaga untuk kemajuan bangsa dan negara."]},
+{n:21,f:4,tp:"Warisan Negara Bangsa",q:"Apakah kepentingan konsep daulat dalam sistem politik Melayu tradisional?",
+ r:["Memperkukuh kedudukan raja-raja","Memperluas peranan golongan pembesar","Menyekat peluasan pengaruh kuasa asing","Mengikat kesetiaan rakyat terhadap raja"],a:[0,3],
+ w:["Daulat ialah kuasa tertinggi raja yang dianggap anugerah Tuhan. Ia mengukuhkan kedudukan raja.",
+    "Daulat milik raja, bukan pembesar. Ia tidak memperluas peranan pembesar.",
+    "Daulat ialah konsep hubungan raja dengan rakyat, bukan alat menyekat kuasa asing.",
+    "Rakyat percaya bahawa sesiapa yang derhaka akan ditimpa tulah. Kepercayaan ini mengikat kesetiaan rakyat kepada raja."]},
+{n:22,f:5,tp:"Raja Berperlembagaan & Demokrasi Berparlimen",q:"Apakah bidang kuasa Yang di-Pertuan Agong?",
+ o:["Mengubah sempadan negeri","Mengetuai perkhidmatan awam","Melantik diplomat ke luar negara","Mengawal perbelanjaan kerajaan"],a:2,
+ w:["Perubahan sempadan negeri memerlukan undang-undang Parlimen dengan persetujuan negeri berkenaan dan Majlis Raja-Raja.",
+    "Perkhidmatan awam diketuai Ketua Setiausaha Negara.",
+    "Yang di-Pertuan Agong melantik duta dan pesuruhjaya tinggi ke luar negara atas nasihat Perdana Menteri.",
+    "Perbelanjaan kerajaan dikawal oleh Parlimen melalui kelulusan bajet."]},
+{n:23,f:5,tp:"Raja Berperlembagaan & Demokrasi Berparlimen",q:"Sejak merdeka, Malaysia telah mengamalkan sistem Demokrasi Berparlimen.",sub:"Pernyataan yang manakah berkaitan dengan sistem tersebut?",
+ o:["Majlis Raja-Raja menggubal perlembagaan","Monarki berkuasa mutlak mengetuai pentadbiran","Badan kehakiman merangka undang-undang","Rakyat terlibat dalam pemerintahan negara"],a:3,
+ w:["Perlembagaan dipinda oleh Parlimen, bukan digubal oleh Majlis Raja-Raja.",
+    "Malaysia mengamalkan Raja Berperlembagaan, bukan monarki mutlak.",
+    "Undang-undang digubal oleh badan perundangan (Parlimen). Badan kehakiman mentafsir undang-undang.",
+    "Rakyat memilih wakil melalui pilihan raya. Inilah asas Demokrasi Berparlimen."]},
+{n:24,f:5,tp:"Sistem Persekutuan",q:"Senarai Negeri memperuntukkan kuasa Kerajaan Negeri.",sub:"Perkara yang manakah terletak dalam Senarai Negeri?",
+ o:["Tanah","Pelajaran","Kesihatan","Pertahanan"],a:0,
+ w:["Tanah, agama Islam dan adat istiadat Melayu ialah antara perkara dalam Senarai Negeri.",
+    "Pelajaran terletak dalam Senarai Persekutuan.",
+    "Kesihatan terletak dalam Senarai Persekutuan.",
+    "Pertahanan terletak dalam Senarai Persekutuan."]},
+{n:25,f:5,tp:"Cabaran selepas Pembentukan Malaysia",q:"Persetujuan Bangkok dicapai pada tahun 1966 di Bangkok, Thailand.",sub:"Mengapakah persetujuan tersebut penting terhadap negara?",
+ o:["Pemulihan hubungan Malaysia–Indonesia","Pengukuhan hubungan Malaysia–Filipina","Penyertaan Brunei dalam Malaysia","Pembentukan Parti Perikatan Sarawak"],a:0,
+ w:["Rundingan antara Tun Abdul Razak dan Adam Malik di Bangkok menamatkan konfrontasi. Hubungan Malaysia–Indonesia pulih.",
+    "Persetujuan Bangkok melibatkan Malaysia dan Indonesia sahaja.",
+    "Brunei tidak menyertai Malaysia.",
+    "Persetujuan ini tiada kaitan dengan parti politik di Sarawak."]},
+{n:26,f:5,tp:"Pembentukan Malaysia",q:"Pada tahun 1962, referendum diadakan di Singapura.",sub:"Mengapakah referendum tersebut diadakan?",
+ o:["Menentukan sokongan terhadap pembentukan Malaysia","Mengukuhkan kesetiaan rakyat terhadap kerajaan","Mengekalkan sistem pentadbiran British","Menilai pengaruh parti berhaluan kiri"],a:0,
+ w:["Referendum 1 September 1962 meninjau pendapat rakyat Singapura tentang penyertaan dalam Malaysia. Majoriti menyokong.",
+    "Referendum bukan alat mengukuhkan kesetiaan kepada kerajaan.",
+    "Tujuan referendum adalah untuk menyertai Malaysia, bukan mengekalkan pentadbiran British.",
+    "Referendum tidak bertujuan menilai parti politik tertentu."]},
+{n:27,f:5,tp:"Cabaran selepas Pembentukan Malaysia",q:"Apakah kesan peristiwa berikut?",
+ s:{k:"table",h:["Tahun","Peristiwa"],rows:[["1965","Peralihan kuasa kepimpinan di Indonesia"]]},
+ o:["Perang Dingin merebak","Pakatan tentera dibentuk","Dasar konfrontasi berakhir","Sistem beraja dipulihkan"],a:2,
+ w:["Perang Dingin sudah berlaku sejak akhir 1940-an. Ia bukan kesan peristiwa ini.",
+    "Tiada pakatan tentera dibentuk hasil peralihan kuasa ini.",
+    "Kuasa beralih daripada Sukarno kepada Suharto. Suharto tidak meneruskan konfrontasi, dan konfrontasi tamat pada 1966.",
+    "Indonesia kekal sebagai republik. Tiada sistem beraja dipulihkan."]},
+{n:28,f:5,tp:"Pembentukan Malaysia",q:"Singapura dan Sarawak menghadapi ancaman komunis pada tahun 1960-an.",sub:"Bagaimanakah Tunku Abdul Rahman menyelesaikan ancaman tersebut?",
+ o:["Membentuk Persekutuan Malaysia","Menubuhkan Jawatankuasa Hubungan Antara Kaum","Mewujudkan kerjasama ketenteraan bersama Indonesia","Memperkukuh hubungan diplomatik dengan Filipina"],a:0,
+ w:["Dalam Malaysia, keselamatan Singapura dan Sarawak diletakkan di bawah Kerajaan Persekutuan. Ancaman komunis dapat dibendung.",
+    "Jawatankuasa Hubungan Antara Kaum (1949) bertujuan merapatkan hubungan kaum, bukan menangani komunis 1960-an.",
+    "Indonesia menentang pembentukan Malaysia melalui konfrontasi. Tiada kerjasama ketenteraan.",
+    "Filipina menuntut Sabah. Isu itu tiada kaitan dengan ancaman komunis di Singapura dan Sarawak."]},
+{n:29,f:5,tp:"Pembentukan Malaysia",q:"Apakah faktor yang menjayakan kemerdekaan negara dan pembentukan Persekutuan Malaysia?",
+ r:["Desakan kumpulan radikal","Pemimpin dan rakyat bermuafakat","Semangat toleransi menjadi amalan","Penduduk terdiri daripada pelbagai kaum"],a:[1,2],
+ w:["Kemerdekaan dan pembentukan Malaysia dicapai melalui rundingan secara aman, bukan desakan radikal.",
+    "Pemimpin dan rakyat bersatu menyokong usaha kemerdekaan dan pembentukan Malaysia.",
+    "Semangat bertolak ansur antara kaum membolehkan persetujuan dicapai.",
+    "Kepelbagaian kaum itu sendiri bukan faktor kejayaan. Yang menjayakannya ialah kerjasama dan toleransi antara kaum."]},
+{n:30,f:5,tp:"Pembentukan Malaysia",q:"Rajah berikut berkaitan dengan proses pembentukan Persekutuan Malaysia.",sub:"X ialah pengumuman penubuhan",
+ s:{k:"time",rows:[["Ogos 1962","<span class='x'>X</span>"],["Januari 1962","Pembentukan Suruhanjaya Cobbold"],["November 1961","Rundingan London"],["Julai 1961","Jawatankuasa Setiakawan Malaysia"]]},
+ o:["Majlis Perundangan Persekutuan","Jawatankuasa Antara Kerajaan","Jawatankuasa Eksekutif","Suruhanjaya Reid"],a:1,
+ w:["Majlis Perundangan Persekutuan ditubuhkan di bawah PTM 1948.",
+    "Selepas laporan Suruhanjaya Cobbold, Jawatankuasa Antara Kerajaan diumumkan pada Ogos 1962 untuk merangka perlembagaan dan perlindungan hak Sabah dan Sarawak.",
+    "Jawatankuasa Eksekutif bukan sebahagian proses pembentukan Malaysia.",
+    "Suruhanjaya Reid (1956) merangka Perlembagaan PTM 1957."]},
+{n:31,f:5,tp:"Membina Kesejahteraan Negara",q:"Penyata Razak 1956 menyatakan dua elemen penting dalam pendidikan untuk membentuk perpaduan kaum.",sub:"Apakah elemen penting tersebut?",
+ r:["Kemahiran teknikal","Kurikulum seragam","Sistem persekolahan sama","Kenaikan darjah secara automatik"],a:[1,2],
+ w:["Kemahiran teknikal bukan elemen perpaduan yang ditekankan dalam Penyata Razak.",
+    "Kurikulum atau sukatan pelajaran yang sama dengan kandungan tempatan menyatukan murid pelbagai kaum.",
+    "Sistem persekolahan yang sama untuk semua kaum menjadi asas perpaduan.",
+    "Kenaikan darjah secara automatik diperkenalkan melalui Laporan Rahman Talib (1960)."]},
+{n:32,f:5,tp:"Membina Kesejahteraan Negara",q:"Berdasarkan Kajian Aminuddin Baki, sistem persekolahan aneka jurusan telah diperkenalkan.",sub:"Mengapakah sistem persekolahan tersebut diperkenalkan?",
+ o:["Melahirkan tenaga kerja mahir","Mengurangkan sekolah vernakular","Memendekkan tempoh persekolahan","Menempatkan murid kelainan upaya"],a:0,
+ w:["Sekolah aneka jurusan menawarkan aliran teknik, vokasional dan akademik untuk menghasilkan tenaga kerja mahir bagi pembangunan negara.",
+    "Sistem ini tiada kaitan dengan mengurangkan sekolah vernakular.",
+    "Tempoh persekolahan tidak dipendekkan.",
+    "Pendidikan khas bukan tujuan sistem aneka jurusan."]},
+{n:33,f:5,tp:"Membina Kesejahteraan Negara",q:"Gambar berikut ialah logo Sukan Malaysia (SUKMA).",sub:"Apakah tujuan sukan tersebut diadakan?",
+ s:{k:"fig",name:"Logo SUKMA",note:"Sukan Malaysia — dirujuk dalam soalan asal"},
+ o:["Memantapkan ekonomi negara","Memperkukuh perpaduan rakyat","Memajukan industri pelancongan","Mengimbangi ekonomi antara kaum"],a:1,
+ w:["Ekonomi bukan tujuan utama SUKMA.",
+    "SUKMA menghimpunkan atlet pelbagai kaum dari semua negeri. Tujuannya memupuk perpaduan dan semangat kekitaan.",
+    "Pelancongan mungkin meningkat, tetapi itu kesan sampingan, bukan tujuan.",
+    "Mengimbangi ekonomi antara kaum ialah matlamat Dasar Ekonomi Baru."]},
+{n:34,f:5,tp:"Membina Kesejahteraan Negara",q:"Dasar Kebudayaan Kebangsaan digubal oleh kerajaan pada tahun 1971.",sub:"Apakah prinsip dasar tersebut?",
+ r:["Memperkukuh identiti kenegerian","Mengutamakan elemen dari luar","Berasaskan kebudayaan rakyat asal","Bertunjangkan ajaran Islam"],a:[2,3],
+ w:["Dasar ini membentuk identiti kebangsaan, bukan identiti kenegerian.",
+    "Unsur kebudayaan lain hanya diterima jika sesuai dan wajar, tidak diutamakan.",
+    "Prinsip pertama: kebudayaan kebangsaan berteraskan kebudayaan rakyat asal rantau ini.",
+    "Prinsip ketiga: Islam menjadi unsur penting dalam pembentukan kebudayaan kebangsaan."]},
+{n:35,f:5,tp:"Membina Kemakmuran Negara",q:"Lembaga Kemajuan Tanah Persekutuan (FELDA) telah ditubuhkan pada 1 Julai 1956 untuk melaksanakan pembukaan tanah baharu.",sub:"Apakah kesan pembukaan tanah tersebut?",
+ r:["Taraf hidup rakyat meningkat","Sektor perladangan berkembang","Meningkatkan kemajuan ekonomi","Menggiatkan pembukaan tanah"],a:[0,1],
+ w:["Peneroka luar bandar memperoleh tanah dan pendapatan tetap. Taraf hidup mereka meningkat.",
+    "Tanah rancangan FELDA ditanam dengan getah dan kelapa sawit. Sektor perladangan berkembang.",
+    "Pernyataan ini terlalu umum. Skema memilih kesan khusus pembukaan tanah, iaitu I dan II.",
+    "Pembukaan tanah ialah tujuan penubuhan FELDA (sudah dinyatakan dalam soalan), bukan kesannya."]},
+{n:36,f:5,tp:"Membina Kemakmuran Negara",q:"Dasar Penswastaan dilancarkan dalam Rancangan Malaysia Keempat.",sub:"Apakah matlamat dasar tersebut?",
+ r:["Mengimbangi pemilikan harta antara kaum","Meningkatkan kualiti perkhidmatan","Meningkatkan kemajuan ekonomi","Menggiatkan pembukaan tanah"],a:[1,2],
+ w:["Mengimbangi pemilikan harta antara kaum ialah matlamat Dasar Ekonomi Baru.",
+    "Syarikat swasta dijangka lebih cekap. Kualiti perkhidmatan kepada rakyat meningkat.",
+    "Penswastaan mengurangkan beban kewangan kerajaan dan merancakkan pertumbuhan ekonomi.",
+    "Pembukaan tanah dilaksanakan oleh FELDA dan agensi tanah, bukan Dasar Penswastaan."]},
+{n:37,f:5,tp:"Dasar Luar Malaysia",q:"Mengapakah Tunku Abdul Rahman melaksanakan dasar pro-Barat?",
+ o:["Konfrontasi Indonesia","Pergolakan di Vietnam","Gesaan Piagam Atlantik","Ancaman Parti Komunis Malaya"],a:3,
+ w:["Konfrontasi bermula pada 1963, selepas dasar pro-Barat sudah dilaksanakan sejak 1957.",
+    "Pergolakan di Vietnam bukan sebab utama dasar pro-Barat.",
+    "Piagam Atlantik (1941) ialah deklarasi Amerika Syarikat–Britain semasa Perang Dunia Kedua. Ia tiada kaitan.",
+    "Negara yang baharu merdeka memerlukan bantuan ketenteraan Britain (Perjanjian Pertahanan Inggeris–Tanah Melayu 1957) untuk menghadapi ancaman PKM."]},
+{n:38,f:5,tp:"Dasar Luar Malaysia",q:"Berikut ialah negara anggota ASEAN yang terawal.",sub:"Apakah sumbangan ASEAN terhadap negara-negara anggota?",
+ s:{k:"list",items:["Malaysia","Indonesia","Thailand","Filipina","Singapura"]},
+ r:["Meningkatkan hubungan sosial","Menyediakan bantuan ketenteraan","Menyeragamkan sistem pentadbiran","Menumpukan pembangunan ekonomi"],a:[0,3],
+ w:["ASEAN menggalakkan kerjasama sosial dan kebudayaan antara negara anggota.",
+    "ASEAN bukan pakatan ketenteraan.",
+    "Setiap negara anggota mengekalkan sistem pentadbiran sendiri. ASEAN berpegang pada prinsip tidak campur tangan.",
+    "Kerjasama ekonomi ialah tumpuan utama ASEAN sejak Deklarasi Bangkok 1967."]},
+{n:39,f:5,tp:"Dasar Luar Malaysia",q:"Apakah faktor yang mempengaruhi penggubalan dasar luar Malaysia?",
+ o:["Pendirian pertubuhan serantau","Kepentingan ekonomi negara","Kehendak kuasa besar","Keperluan ketenteraan"],a:1,
+ w:["Dasar luar digubal berdasarkan kepentingan negara sendiri, bukan pendirian pertubuhan serantau.",
+    "Kepentingan ekonomi, seperti perdagangan dan pelaburan, menjadi asas penggubalan dasar luar Malaysia.",
+    "Malaysia mengamalkan dasar bebas dan tidak tunduk pada kehendak kuasa besar.",
+    "Pernyataan ini terlalu sempit. Faktor yang diterima ialah kepentingan negara secara menyeluruh, dan skema memilih kepentingan ekonomi."]},
+{n:40,f:5,tp:"Dasar Luar Malaysia",q:"Afrika Selatan mengamalkan Dasar Aparteid.",sub:"Mengapakah Malaysia menentang dasar tersebut?",
+ o:["Hubungan dagang terhad","Dasar komunis diamalkan","Kebebasan beragama disekat","Diskriminasi kaum dilaksanakan"],a:3,
+ w:["Sekatan dagangan ialah tindakan Malaysia terhadap Afrika Selatan, bukan sebab penentangan.",
+    "Kerajaan Afrika Selatan ketika itu antikomunis.",
+    "Aparteid ialah isu diskriminasi kaum, bukan agama.",
+    "Aparteid memisahkan dan menindas kaum kulit hitam. Malaysia menentangnya kerana bercanggah dengan prinsip keadilan dan hak asasi."]}
+];
+
+const LET = "ABCD", RN = ["I","II","III","IV"];
+const TEAM_COLORS = ["#E39A2D","#2F7FC1","#2B8A57","#C2423A","#8A5CC7","#1C9AA0"];
+const STD_PAIRS = [[0,1],[0,2],[1,3],[2,3]];
+
+function combosFor(q){
+  const a = q.a;
+  let set = STD_PAIRS.map(p=>p.slice());
+  if(!set.some(p=>p[0]===a[0]&&p[1]===a[1])){ set[q.n % 4] = a.slice(); }
+  set.sort((x,y)=>x[0]-y[0]||x[1]-y[1]);
+  return set;
+}
+function optionsOf(q){
+  if(!q.r) return q.o.map((t,i)=>({t, ok:i===q.a, why:q.w[i]}));
+  return combosFor(q).map(c=>{
+    const ok = c[0]===q.a[0] && c[1]===q.a[1];
+    const bad = c.filter(i=>!q.a.includes(i));
+    return {t:`${RN[c[0]]} dan ${RN[c[1]]}`, ok,
+      why: ok ? `Kedua-dua pernyataan ${RN[c[0]]} dan ${RN[c[1]]} tepat.`
+              : `Pernyataan ${bad.map(i=>RN[i]).join(" dan ")} tidak tepat. Lihat huraian pernyataan di atas.`};
+  });
+}
+function correctIndex(q){ return optionsOf(q).findIndex(o=>o.ok); }
+
+/* ---------- storage (per-viewer convenience) ---------- */
+const store = {
+  get(k,d){ try{ const v = localStorage.getItem("arenaK1:"+k); return v==null?d:JSON.parse(v);}catch(e){return d;} },
+  set(k,v){ try{ localStorage.setItem("arenaK1:"+k, JSON.stringify(v)); }catch(e){} }
+};
+
+/* ---------- state ---------- */
+const S = {
+  screen:"home",
+  mode: store.get("mode","solo"),
+  set: "all",
+  pick: new Set(store.get("pick",[])),
+  shuffle: store.get("shuffle",false),
+  timer: store.get("timer",0),
+  teams: store.get("teams",["Kumpulan Merah","Kumpulan Biru","Kumpulan Hijau","Kumpulan Kuning"]).slice(0,6),
+  nTeams: store.get("nTeams",4),
+  sound: store.get("sound",true),
+  fs: store.get("fs",1),
+  lastWrong: store.get("lastWrong",[]),
+  // run
+  list:[], i:0, answers:{}, streak:0, best:0,
+  marks:{}, adj:[], tLeft:0, tId:null, reviewFilter:"all"
+};
+if(S.pick.size) S.set="custom";
+document.documentElement.style.setProperty("--fs", S.fs);
+
+const app = document.getElementById("app");
+const esc = s => String(s).replace(/[&<>"']/g, c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const curQ = () => S.list[S.i];
+const isRevealed = q => !!S.answers[q.n];
+const soloScore = () => Object.values(S.answers).filter(a=>a.ok).length;
+const teamScore = k => (S.adj[k]||0) + 10*Object.values(S.marks).filter(m=>m.includes(k)).length;
+
+/* ---------- sound ---------- */
+let AC=null;
+function beep(freqs, dur=.12, type="sine", vol=.08){
+  if(!S.sound) return;
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    let t = AC.currentTime;
+    freqs.forEach(f=>{
+      const o=AC.createOscillator(), g=AC.createGain();
+      o.type=type; o.frequency.value=f; g.gain.setValueAtTime(vol,t); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+      o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+dur); t+=dur*.85;
+    });
+  }catch(e){}
+}
+const sfx = {
+  ok:()=>beep([523,659,784],.11,"triangle",.09),
+  bad:()=>beep([220,165],.16,"sawtooth",.04),
+  tick:()=>beep([880],.05,"square",.025),
+  end:()=>beep([523,659,784,1047],.14,"triangle",.09)
+};
+
+/* ---------- confetti ---------- */
+const fx = document.getElementById("fx"), ctx = fx.getContext("2d");
+let parts=[], raf=null;
+const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+function confetti(x, y, n=70){
+  if(reduce) return;
+  fx.width = innerWidth*devicePixelRatio; fx.height = innerHeight*devicePixelRatio;
+  const cols=["#E39A2D","#2B8A57","#2F7FC1","#C2423A","#F0B24F","#10363D"];
+  for(let k=0;k<n;k++) parts.push({x:x*devicePixelRatio,y:y*devicePixelRatio,vx:(Math.random()-.5)*14,vy:-Math.random()*13-4,g:.45,s:(Math.random()*6+4)*devicePixelRatio,c:cols[k%cols.length],r:Math.random()*6,vr:(Math.random()-.5)*.4,life:90+Math.random()*30});
+  if(!raf) loop();
+}
+function loop(){
+  ctx.clearRect(0,0,fx.width,fx.height);
+  parts = parts.filter(p=>p.life>0);
+  parts.forEach(p=>{ p.vy+=p.g; p.x+=p.vx; p.y+=p.vy; p.vx*=.99; p.r+=p.vr; p.life--;
+    ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.r); ctx.globalAlpha=Math.min(1,p.life/30); ctx.fillStyle=p.c; ctx.fillRect(-p.s/2,-p.s/4,p.s,p.s/2); ctx.restore(); });
+  raf = parts.length ? requestAnimationFrame(loop) : (ctx.clearRect(0,0,fx.width,fx.height), null);
+}
+
+function toast(msg){
+  const t=document.createElement("div"); t.className="toast"; t.textContent=msg; document.body.appendChild(t);
+  setTimeout(()=>t.remove(),1800);
+}
+
+/* ---------- shared chrome ---------- */
+function topbar(){
+  return `<header class="topbar">
+    <div class="brand"><div class="seal">K1</div><div><b>Arena K1 Sejarah</b><span>Bengkel Sejarah · Kertas 1 SPM 2021</span></div></div>
+    <div class="tools">
+      ${S.screen!=="home"?`<button class="btn sm ghost" data-act="home">Menu utama</button>`:""}
+      <button class="btn sm ghost" data-act="fs" title="Besarkan teks untuk projektor">Saiz teks ${Math.round(S.fs*100)}%</button>
+      <button class="btn sm ghost" data-act="sound" aria-pressed="${S.sound}">Bunyi: ${S.sound?"Hidup":"Senyap"}</button>
+      <button class="btn sm ghost" data-act="full">Skrin penuh</button>
+    </div>
+  </header>`;
+}
+
+/* ---------- HOME ---------- */
+function poolFor(set){
+  if(set==="T4") return Q.filter(q=>q.f===4);
+  if(set==="T5") return Q.filter(q=>q.f===5);
+  if(set==="wrong") return Q.filter(q=>S.lastWrong.includes(q.n));
+  if(set==="custom") return Q.filter(q=>S.pick.has(q.n));
+  return Q.slice();
+}
+function renderHome(){
+  const n4=Q.filter(q=>q.f===4).length, n5=Q.length-n4;
+  const inSet = new Set(poolFor(S.set).map(q=>q.n));
+  const strip = Q.map(q=>`<button class="pk ${q.r?"r":""}" data-pk="${q.n}" aria-pressed="${inSet.has(q.n)}" title="Soalan ${q.n} · ${esc(q.tp)}${q.r?" · gabungan I–IV":""}">${q.n}</button>`).join("");
+  const teamInputs = Array.from({length:S.nTeams},(_,k)=>`<div class="teamrow"><span class="dot" style="background:${TEAM_COLORS[k]}"></span><input id="team${k}" value="${esc(S.teams[k]||("Kumpulan "+(k+1)))}" aria-label="Nama kumpulan ${k+1}" maxlength="28"></div>`).join("");
+  app.innerHTML = topbar()+`
+  <section class="hero">
+    <div>
+      <div class="eyebrow">Bengkel Sejarah · 40 soalan objektif</div>
+      <h1 style="margin-top:.35em">Uji, semak,<br><em>fahami sebabnya.</em></h1>
+      <p class="lead">Kertas 1 Sejarah SPM 2021 dalam bentuk kuiz interaktif. Setiap pilihan jawapan disertakan huraian kenapa ia betul atau salah, supaya pelajar belajar daripada setiap soalan, bukan sekadar mengira markah.</p>
+      <div class="pickhead"><span class="lbl">Pilih soalan</span><b class="pickcount">${inSet.size} dipilih</b></div>
+      <div class="ansstrip" aria-label="Klik nombor untuk pilih atau buang soalan">${strip}</div>
+      <div class="seg quick" style="margin-top:10px">
+        <button data-quick="all">Pilih semua</button>
+        <button data-quick="none">Kosongkan</button>
+        <button data-quick="roman">Gabungan I–IV sahaja</button>
+        <button data-quick="single">Pilihan tunggal sahaja</button>
+      </div>
+      <p class="note" style="margin-top:8px">Klik nombor untuk pilih atau buang soalan. Nombor bertanda sudut ialah soalan gabungan I–IV (12 soalan).</p>
+    </div>
+    <div class="setup">
+      <div class="field"><span class="lbl">Mod permainan</span>
+        <div class="modecards">
+          <button class="modecard" data-mode="solo" aria-pressed="${S.mode==="solo"}"><b>Latihan individu</b><span>Pelajar jawab sendiri di telefon atau komputer. Huraian terus keluar selepas menjawab.</span></button>
+          <button class="modecard" data-mode="group" aria-pressed="${S.mode==="group"}"><b>Pertandingan kumpulan</b><span>Guru tayang di projektor. Kumpulan berlumba, guru tanda siapa betul dan papan markah dikemas kini.</span></button>
+        </div>
+      </div>
+      <div class="field"><span class="lbl">Set soalan</span>
+        <div class="seg" data-seg="set">
+          ${[["all","Semua 40"],["T4",`Tingkatan 4 (${n4})`],["T5",`Tingkatan 5 (${n5})`],["custom",`Pilihan sendiri (${S.pick.size})`]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${S.set===v}">${l}</button>`).join("")}
+          ${S.lastWrong.length?`<button data-v="wrong" aria-pressed="${S.set==="wrong"}">Ulang yang salah (${S.lastWrong.length})</button>`:""}
+        </div>
+      </div>
+      <div class="field"><span class="lbl">Masa setiap soalan</span>
+        <div class="seg" data-seg="timer">
+          ${[[0,"Tanpa had"],[30,"30 saat"],[45,"45 saat"],[60,"60 saat"]].map(([v,l])=>`<button data-v="${v}" aria-pressed="${S.timer===v}">${l}</button>`).join("")}
+        </div>
+      </div>
+      <div class="field"><span class="lbl">Susunan</span>
+        <div class="seg" data-seg="shuffle">
+          <button data-v="0" aria-pressed="${!S.shuffle}">Ikut nombor soalan</button>
+          <button data-v="1" aria-pressed="${S.shuffle}">Rawak</button>
+        </div>
+      </div>
+      ${S.mode==="group"?`<div class="field"><span class="lbl">Kumpulan</span>
+        <div class="seg" data-seg="nTeams">${[2,3,4,5,6].map(v=>`<button data-v="${v}" aria-pressed="${S.nTeams===v}">${v}</button>`).join("")}</div>
+        <div class="teams">${teamInputs}</div></div>`:""}
+      <div class="startrow">
+        <button class="btn accent" data-act="start" style="font-size:1.08em" ${inSet.size?"":"disabled"}>Mula ${S.mode==="group"?"pertandingan":"latihan"} (${inSet.size} soalan) →</button>
+        <button class="btn" data-act="bank">Lihat semua jawapan &amp; huraian</button>
+      </div>
+    </div>
+  </section>
+  <section class="howto">
+    <div><h3>Jawab</h3><p>Klik pilihan, atau tekan <kbd>A</kbd>–<kbd>D</kbd> / <kbd>1</kbd>–<kbd>4</kbd>. Untuk soalan gabungan, baca pernyataan I–IV dahulu.</p></div>
+    <div><h3>Fahami</h3><p>Selepas menjawab, setiap pilihan menunjukkan sebab ia betul atau salah. Soalan gabungan turut menilai setiap pernyataan.</p></div>
+    <div><h3>Navigasi</h3><p>Guna <kbd>←</kbd> untuk kembali dan <kbd>→</kbd> untuk ke hadapan. Klik mana-mana petak kemajuan untuk lompat terus ke soalan itu.</p></div>
+  </section>
+  <footer>Panitia Sejarah SMKDUMA · Skema berdasarkan jawapan percubaan 2021</footer>`;
+}
+function savePick(){ store.set("pick",[...S.pick]); }
+
+/* ---------- QUIZ ---------- */
+function readTeams(n){
+  return Array.from({length:n},(_,k)=>{ const el=document.getElementById("team"+k); return (el&&el.value.trim())||S.teams[k]||("Kumpulan "+(k+1)); });
+}
+function startRun(set){
+  if(document.getElementById("team0")) S.teams = readTeams(S.nTeams);
+  store.set("teams",S.teams); store.set("nTeams",S.nTeams);
+  let pool = poolFor(set||S.set);
+  if(!pool.length){ toast("Pilih sekurang-kurangnya satu soalan"); return; }
+  if(S.shuffle){ for(let k=pool.length-1;k>0;k--){ const j=Math.floor(Math.random()*(k+1)); [pool[k],pool[j]]=[pool[j],pool[k]]; } }
+  Object.assign(S,{screen:"quiz",list:pool,i:0,answers:{},streak:0,best:0,marks:{},adj:S.teams.slice(0,S.nTeams).map(()=>0)});
+  S.teams = S.teams.slice(0,S.nTeams);
+  renderQuiz(); window.scrollTo({top:0});
+}
+function stimHTML(s){
+  if(!s) return "";
+  if(s.k==="table") return `<div class="stim"><table><thead><tr>${s.h.map(h=>`<th>${h}</th>`).join("")}</tr></thead><tbody>${s.rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+  if(s.k==="list") return `<div class="stim"><ul class="${s.it?"it":""}">${s.items.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+  if(s.k==="time") return `<div class="stim"><div class="tline">${s.rows.map((r,k)=>`<div class="yr">${r[0]}</div><div class="ax ${k===0?"first":""} ${k===s.rows.length-1?"last":""}"><span></span></div><div class="ev">${r[1]}</div>`).join("")}</div></div>`;
+  if(s.k==="fig") return `<div class="stim"><div class="plate"><div class="ph">${s.name.split(" ").map(w=>w[0]).join("").slice(0,2)}</div><div><b>${s.name}</b><small>${s.note}</small></div></div></div>`;
+  return "";
+}
+function renderQuiz(){
+  const q = curQ(), total=S.list.length, rev=isRevealed(q), pick=S.answers[q.n];
+  const opts = optionsOf(q);
+  const group = S.mode==="group";
+  const pips = S.list.map((x,k)=>{ const a=S.answers[x.n]; let c=""; if(a) c=a.group?"ok":(a.ok?"ok":"bad"); if(k===S.i) c+=" cur"; return `<button class="${c}" data-jump="${k}" aria-label="Pergi ke soalan ${x.n}" title="Soalan ${x.n}"></button>`; }).join("");
+  const roman = q.r ? `<ol class="roman">${q.r.map((t,k)=>{ const good=q.a.includes(k); return `<li class="${rev?(good?"ok":"bad"):""}"><span class="rn">${RN[k]}</span><span>${t}</span>${rev?`<span class="tag">${good?"TEPAT":"TIDAK TEPAT"}</span><span class="rw">${q.w[k]}</span>`:"<span></span>"}</li>`; }).join("")}</ol>` : "";
+  const optHTML = opts.map((o,k)=>{
+    let cls="opt";
+    if(rev){ cls += o.ok?" ok":" bad"; if(pick&&pick.i===k) cls+=" pick"; if(!o.ok && !(pick&&pick.i===k)) cls+=" dim"; }
+    return `<button class="${cls}" data-opt="${k}" ${rev?"disabled":""} aria-label="Pilihan ${LET[k]}: ${esc(o.t)}">
+      <span class="L">${LET[k]}</span><span class="T">${o.t}</span>
+      <span class="W"><span class="V">${o.ok?"Betul":"Salah"}</span>${o.why}</span></button>`;
+  }).join("");
+  const last = S.i+1>=total;
+  const nav = `<div class="navrow">
+      <button class="btn" data-act="prev" ${S.i===0?"disabled":""}>← Sebelumnya</button>
+      ${rev?`<button class="btn primary" data-act="next">${last?"Lihat keputusan →":"Seterusnya →"}</button>`
+           :(group?`<button class="btn primary" data-act="reveal">Dedah jawapan</button>`:`<button class="btn" data-act="skip">Langkau</button>`)}
+    </div>`;
+  let verdict="";
+  if(rev){
+    const ci = correctIndex(q);
+    if(group){
+      verdict = `<div class="verdict"><div><h3 class="ok">Jawapan: ${LET[ci]}. ${opts[ci].t}</h3><p>Tandakan kumpulan yang betul di papan markah.</p></div></div>`;
+    } else {
+      const ok = pick && pick.ok, timeout = pick && pick.i<0;
+      verdict = `<div class="verdict"><div><h3 class="${ok?"ok":"bad"}">${ok?(pick.streak>=3?`Betul! ${pick.streak} berturut-turut`:"Betul!"):timeout?"Tidak dijawab":"Belum tepat"}</h3>
+        <p>${ok?"Baca huraian pilihan lain untuk mengukuhkan kefahaman.":`Jawapan yang betul ialah <b>${LET[ci]}. ${opts[ci].t}</b>.`}</p></div></div>`;
+    }
+  }
+  const timerHTML = (S.timer && !rev) ? `<div class="timer" id="timer"><svg viewBox="0 0 48 48"><circle class="trk" cx="24" cy="24" r="20"/><circle class="val" cx="24" cy="24" r="20" stroke-dasharray="125.66" stroke-dashoffset="0"/></svg><span>${S.timer}</span></div>` : "";
+  const answered = Object.keys(S.answers).length;
+  const board = group ? `<aside class="board" aria-label="Papan markah">
+      <div><div class="eyebrow">Papan markah</div><h2>+10 setiap jawapan betul</h2></div>
+      ${boardRows(q)}
+      <p class="note" style="margin:0">${rev?"Klik “Betul” untuk kumpulan yang menjawab dengan tepat. Klik sekali lagi untuk batal.":"Kumpulan tulis jawapan. Guru klik pilihan yang dipilih kelas, atau tekan “Dedah jawapan”."}</p>
+    </aside>` : "";
+  app.innerHTML = topbar()+`
+  <div class="statusbar">
+    ${timerHTML}
+    <div class="pips" aria-label="Kemajuan — klik untuk lompat ke soalan">${pips}</div>
+    <div class="stat"><small>Soalan</small><b>${S.i+1}/${total}</b></div>
+    ${group?"":`<div class="stat"><small>Markah</small><b>${soloScore()}</b></div><div class="stat streak hide-s"><small>Rentak</small><b>×${S.streak}</b></div>`}
+    <button class="btn sm ghost" data-act="finish" title="Tamatkan dan lihat keputusan">Tamat (${answered}/${total})</button>
+  </div>
+  <div class="qlayout ${group?"group":""}">
+    <article class="qcard ${rev?"revealed":""} ${group?"group-mode":""}">
+      <div class="qhead">
+        <div class="qno"><b>${q.n}</b><small>/ 40</small></div>
+        <div>
+          <div class="qmeta"><span class="chip t">Tingkatan ${q.f}</span><span class="chip">${q.tp}</span>${q.r?`<span class="chip">Gabungan I–IV</span>`:""}</div>
+          <p class="qtext">${q.q}${q.sub?`<span class="sub">${q.sub}</span>`:""}</p>
+        </div>
+      </div>
+      ${stimHTML(q.s)}
+      ${roman}
+      <div class="opts" role="group" aria-label="Pilihan jawapan">${optHTML}</div>
+      ${verdict}
+      ${nav}
+      ${!rev?`<p class="note" style="margin:0">Tekan <kbd>A</kbd>–<kbd>D</kbd> untuk menjawab${group?", <kbd>Space</kbd> untuk dedah jawapan":""}, <kbd>←</kbd> untuk kembali.</p>`:""}
+    </article>
+    ${board}
+  </div>`;
+  if(!rev && S.timer) startTimer(); else stopTimer();
+}
+function boardRows(q){
+  const sc = S.teams.map((_,k)=>teamScore(k)), max = Math.max(...sc);
+  const m = S.marks[q.n]||[], rev = isRevealed(q);
+  return S.teams.map((t,k)=>`<div class="trow ${sc[k]===max&&max>0?"lead":""}">
+    <span class="dot" style="background:${TEAM_COLORS[k]}"></span><span class="nm">${esc(t)}</span><span class="sc" id="sc${k}">${sc[k]}</span>
+    <div class="ctl">${rev?`<button class="markbtn" data-mark="${k}" aria-pressed="${m.includes(k)}">${m.includes(k)?"Betul ✓":"Betul"}</button>`:""}
+      <button class="adj" data-adj="${k}" data-d="-5" aria-label="Tolak 5 markah ${esc(t)}">−5</button><button class="adj" data-adj="${k}" data-d="5" aria-label="Tambah 5 markah ${esc(t)}">+5</button></div>
+  </div>`).join("");
+}
+function refreshBoard(bumpK){
+  const b = app.querySelector(".board"); if(!b) return;
+  const rows = b.querySelectorAll(".trow"); const tmp=document.createElement("div"); tmp.innerHTML = boardRows(curQ());
+  rows.forEach((r,k)=>r.replaceWith(tmp.children[0]));
+  if(bumpK!=null){ const el=document.getElementById("sc"+bumpK); if(el) el.classList.add("bump"); }
+}
+function startTimer(){
+  stopTimer(); S.tLeft=S.timer;
+  const el=document.getElementById("timer"); if(!el) return;
+  const c=el.querySelector(".val"), sp=el.querySelector("span"), C=125.66;
+  S.tId=setInterval(()=>{
+    S.tLeft--; sp.textContent=S.tLeft; c.style.strokeDashoffset = C*(1-S.tLeft/S.timer);
+    if(S.tLeft<=5){ el.classList.add("low"); if(S.tLeft>0) sfx.tick(); }
+    if(S.tLeft<=0){ stopTimer(); if(S.mode==="group") reveal(null); else answer(-1); }
+  },1000);
+}
+function stopTimer(){ if(S.tId){ clearInterval(S.tId); S.tId=null; } }
+
+function answer(k){
+  const q=curQ(); if(isRevealed(q)) return;
+  if(S.mode==="group"){ reveal(k); return; }
+  const ci=correctIndex(q), ok = k===ci;
+  if(ok){ S.streak++; S.best=Math.max(S.best,S.streak); sfx.ok(); } else { S.streak=0; if(k>=0) sfx.bad(); }
+  S.answers[q.n]={i:k,ok,streak:S.streak};
+  stopTimer(); renderQuiz();
+  const btn = k>=0 ? app.querySelector(`[data-opt="${k}"]`) : null;
+  if(btn){ btn.classList.add(ok?"pop":"shake"); if(ok){ const r=btn.getBoundingClientRect(); confetti(r.left+r.width/2, r.top+r.height/2, S.streak>=3?110:60); } }
+}
+function reveal(k){
+  const q=curQ(); if(isRevealed(q)) return; const ci=correctIndex(q);
+  S.answers[q.n] = {i: (k==null?-1:k), ok: k===ci, group:true};
+  stopTimer(); sfx.ok(); renderQuiz();
+  const btn=app.querySelector(`[data-opt="${ci}"]`);
+  if(btn){ btn.classList.add("pop"); const r=btn.getBoundingClientRect(); confetti(r.left+r.width/2, r.top+r.height/2, 50); }
+}
+function go(idx){
+  if(idx<0 || idx>=S.list.length) return;
+  S.i = idx; renderQuiz(); window.scrollTo({top:0,behavior:reduce?"auto":"smooth"});
+}
+function next(){
+  if(!isRevealed(curQ())) return;
+  if(S.i+1<S.list.length) go(S.i+1); else finish();
+}
+function prev(){ go(S.i-1); }
+
+/* ---------- END ---------- */
+function finish(){
+  stopTimer(); S.screen="end";
+  if(S.mode==="solo"){
+    const wrong = S.list.filter(q=>!(S.answers[q.n]&&S.answers[q.n].ok)).map(q=>q.n);
+    S.lastWrong = wrong; store.set("lastWrong",wrong);
+  }
+  renderEnd(); window.scrollTo({top:0}); sfx.end(); if(!reduce) setTimeout(()=>confetti(innerWidth/2, innerHeight/3, 140),250);
+}
+function band(p){
+  if(p>=80) return ["Cemerlang!","Penguasaan yang sangat baik. Cabar diri dengan mod rawak dan had masa 30 saat."];
+  if(p>=65) return ["Bagus!","Asas anda kukuh. Semak soalan yang salah di bawah dan fahami huraiannya."];
+  if(p>=50) return ["Hampir sampai","Fokus pada soalan gabungan I–IV dan fakta tarikh. Ulang set soalan yang salah."];
+  return ["Teruskan usaha","Baca huraian setiap soalan di bawah, kemudian ulang set soalan yang salah sahaja."];
+}
+function renderEnd(){
+  const total=S.list.length, group=S.mode==="group";
+  let head;
+  if(group){
+    const order = S.teams.map((t,k)=>({t,k,s:teamScore(k)})).sort((a,b)=>b.s-a.s);
+    head = `<section class="endcard" style="grid-template-columns:1fr">
+      <div><div class="eyebrow">Keputusan pertandingan · ${total} soalan</div><h2>${esc(order[0].t)} juara!</h2><p>Tahniah kepada semua kumpulan. Semak semula huraian setiap soalan di bawah bersama pelajar.</p>
+      <div class="podium">${order.map((o,p)=>`<div class="trow ${p===0?"lead":""}"><span class="pos">${p+1}</span><span class="dot" style="background:${TEAM_COLORS[o.k]}"></span><span class="nm">${esc(o.t)}</span><span class="sc">${o.s}</span></div>`).join("")}</div>
+      <div class="startrow"><button class="btn" data-act="resume">← Kembali ke soalan</button><button class="btn accent" data-act="again">Main semula</button><button class="btn ghost" data-act="home">Menu utama</button></div></div></section>`;
+  } else {
+    const score=soloScore(), p = Math.round(score/total*100), [t,msg]=band(p), C=2*Math.PI*70;
+    head = `<section class="endcard">
+      <div class="ring"><svg viewBox="0 0 170 170"><circle class="trk" cx="85" cy="85" r="70"/><circle class="val" id="ringv" cx="85" cy="85" r="70" stroke-dasharray="${C}" stroke-dashoffset="${C}"/></svg><div><b>${score}</b><small>daripada ${total}</small></div></div>
+      <div><div class="eyebrow">Keputusan · ${p}% · rentak terbaik ×${S.best}</div><h2>${t}</h2><p>${msg}</p>
+      <div class="startrow"><button class="btn" data-act="resume">← Kembali ke soalan</button>${S.lastWrong.length?`<button class="btn accent" data-act="retrywrong">Ulang ${S.lastWrong.length} soalan yang salah</button>`:""}<button class="btn" data-act="again">Cuba semula</button><button class="btn ghost" data-act="home">Menu utama</button></div></div></section>`;
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{ const r=document.getElementById("ringv"); if(r) r.style.strokeDashoffset = C*(1-score/total); }));
+  }
+  app.innerHTML = topbar()+head+reviewHTML(S.list, !group);
+}
+function reviewHTML(list, withPick){
+  const filtered = (withPick && S.reviewFilter==="wrong") ? list.filter(q=>!(S.answers[q.n]&&S.answers[q.n].ok)) : list;
+  return `<section class="review">
+    <div class="revhead"><div><div class="eyebrow">Semakan jawapan</div><h2>${withPick?"Semak jawapan anda":(S.screen==="bank"?"Skema & huraian 40 soalan":"Skema & huraian")}</h2></div>
+      ${withPick?`<div class="seg" data-seg="reviewFilter"><button data-v="all" aria-pressed="${S.reviewFilter==="all"}">Semua</button><button data-v="wrong" aria-pressed="${S.reviewFilter==="wrong"}">Salah sahaja</button></div>`:""}</div>
+    ${filtered.length?filtered.map(q=>{
+      const opts=optionsOf(q), ci=correctIndex(q), a=S.answers[q.n];
+      const st = withPick ? (a&&a.ok?"ok":"bad") : "";
+      const yours = withPick ? (a && a.i>=0 ? (a.ok?"":` · Jawapan anda: <s>${LET[a.i]}. ${opts[a.i].t}</s>`) : " · Tidak dijawab") : "";
+      const reasons = q.r
+        ? q.r.map((t,k)=>`<li><b>${RN[k]}. ${t} — ${q.a.includes(k)?"Tepat":"Tidak tepat"}.</b> ${q.w[k]}</li>`).join("")
+        : opts.map((o,k)=>`<li><b>${LET[k]}. ${o.t} — ${o.ok?"Betul":"Salah"}.</b> ${o.why}</li>`).join("");
+      return `<div class="rv ${st}"><div class="n">${q.n}</div><div class="q">${q.q}${q.sub?" "+q.sub:""}</div>
+        <div class="a">Jawapan: <b>${LET[ci]}. ${opts[ci].t}</b>${yours}</div>
+        <details ${withPick&&st==="bad"?"open":""}><summary>Kenapa betul, kenapa salah</summary><ul>${reasons}</ul></details></div>`;
+    }).join(""):`<p class="note">Semua jawapan betul. Tahniah!</p>`}
+  </section>`;
+}
+function renderBank(){
+  S.screen="bank"; const keep=S.answers; S.answers={};
+  app.innerHTML = topbar()+reviewHTML(Q,false)+`<footer>Panitia Sejarah SMKDUMA</footer>`;
+  S.answers=keep; window.scrollTo({top:0});
+}
+
+/* ---------- events ---------- */
+app.addEventListener("click", e=>{
+  const b = e.target.closest("button"); if(!b || b.disabled) return;
+  if(b.dataset.mode){ S.mode=b.dataset.mode; store.set("mode",S.mode); if(document.getElementById("team0")) S.teams=readTeams(S.nTeams); renderHome(); return; }
+  if(b.dataset.pk){
+    const n=+b.dataset.pk;
+    if(S.set!=="custom"){ S.pick = new Set(poolFor(S.set).map(q=>q.n)); S.set="custom"; }
+    S.pick.has(n)?S.pick.delete(n):S.pick.add(n); savePick(); renderHome(); return;
+  }
+  if(b.dataset.quick){
+    const v=b.dataset.quick;
+    S.pick = new Set(Q.filter(q=> v==="all" || (v==="roman"&&q.r) || (v==="single"&&!q.r)).map(q=>q.n));
+    S.set = v==="all" ? "all" : "custom"; if(v==="all") S.pick=new Set();
+    savePick(); renderHome(); return;
+  }
+  const seg = b.closest("[data-seg]");
+  if(seg && b.dataset.v!==undefined){
+    const key=seg.dataset.seg, v=b.dataset.v;
+    if(document.getElementById("team0")) S.teams = readTeams(Math.max(S.nTeams,6));
+    if(key==="set"){ S.set=v; }
+    if(key==="timer"){ S.timer=+v; store.set("timer",S.timer); }
+    if(key==="shuffle"){ S.shuffle=v==="1"; store.set("shuffle",S.shuffle); }
+    if(key==="nTeams"){ S.nTeams=+v; }
+    if(key==="reviewFilter"){ S.reviewFilter=v; renderEnd(); return; }
+    renderHome(); return;
+  }
+  if(b.dataset.opt!==undefined){ answer(+b.dataset.opt); return; }
+  if(b.dataset.jump!==undefined){ go(+b.dataset.jump); return; }
+  if(b.dataset.mark!==undefined){
+    const k=+b.dataset.mark, q=curQ(); const m=S.marks[q.n]||(S.marks[q.n]=[]);
+    const at=m.indexOf(k); if(at>=0) m.splice(at,1); else { m.push(k); sfx.tick(); }
+    refreshBoard(at>=0?null:k); return;
+  }
+  if(b.dataset.adj!==undefined){ const k=+b.dataset.adj; S.adj[k]=(S.adj[k]||0)+(+b.dataset.d); if(teamScore(k)<0) S.adj[k]-=teamScore(k); refreshBoard(k); return; }
+  const act=b.dataset.act;
+  if(act==="start") startRun();
+  else if(act==="next") next();
+  else if(act==="prev") prev();
+  else if(act==="reveal") reveal(null);
+  else if(act==="skip") answer(-1);
+  else if(act==="finish") finish();
+  else if(act==="resume"){ S.screen="quiz"; S.reviewFilter="all"; renderQuiz(); window.scrollTo({top:0}); }
+  else if(act==="home"){ stopTimer(); S.screen="home"; S.reviewFilter="all"; renderHome(); }
+  else if(act==="again"){ S.reviewFilter="all"; startRun(); }
+  else if(act==="retrywrong"){ S.set="wrong"; S.reviewFilter="all"; startRun("wrong"); }
+  else if(act==="bank") renderBank();
+  else if(act==="fs"){ S.fs = S.fs>=1.3?1:Math.round((S.fs+.15)*100)/100; store.set("fs",S.fs); document.documentElement.style.setProperty("--fs",S.fs); b.textContent=`Saiz teks ${Math.round(S.fs*100)}%`; }
+  else if(act==="sound"){ S.sound=!S.sound; store.set("sound",S.sound); b.textContent=`Bunyi: ${S.sound?"Hidup":"Senyap"}`; b.setAttribute("aria-pressed",S.sound); }
+  else if(act==="full"){ try{ if(document.fullscreenElement) document.exitFullscreen(); else document.documentElement.requestFullscreen().catch(()=>toast("Skrin penuh tidak disokong di sini")); }catch(err){ toast("Skrin penuh tidak disokong di sini"); } }
+});
+app.addEventListener("input", e=>{
+  const m = e.target.id && e.target.id.match(/^team(\d)$/); if(m){ S.teams[+m[1]] = e.target.value; }
+});
+document.addEventListener("keydown", e=>{
+  if(S.screen!=="quiz" || e.target.tagName==="INPUT") return;
+  const k=e.key.toLowerCase(); const map={a:0,b:1,c:2,d:3,"1":0,"2":1,"3":2,"4":3};
+  const rev = isRevealed(curQ());
+  if(!rev && k in map){ e.preventDefault(); answer(map[k]); }
+  else if(e.key==="ArrowLeft"){ e.preventDefault(); prev(); }
+  else if(rev && (e.key==="Enter"||e.key==="ArrowRight")){ e.preventDefault(); next(); }
+  else if(!rev && e.key===" " && S.mode==="group"){ e.preventDefault(); reveal(null); }
+});
+
+renderHome();
+</script>
+
+</body>
+</html>
